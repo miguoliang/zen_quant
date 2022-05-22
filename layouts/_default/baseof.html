@@ -1,0 +1,374 @@
+<!DOCTYPE html>
+<html lang="{{ .Site.Language.Lang }}">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="color-scheme" content="light dark">
+
+    {{ if .Site.Params.csp }}
+    {{ partial "csp.html" . }}
+    {{ end }}
+
+    {{ with .Site.Params.author }}
+    <meta name="author" content="{{ . }}">
+    {{ end }}
+    <meta name="description" content="{{ .Description | default (.Summary | default .Site.Params.description ) }}">
+    <meta name="keywords" content="{{ (delimit .Keywords " ,") | default .Site.Params.keywords }}">
+
+    {{ template "_internal/twitter_cards.html" . }}
+    {{ template "_internal/opengraph.html" . }}
+
+    <title>{{ block "title" . }}{{ .Site.Title }}{{ end }}</title>
+
+    {{ if .Permalink }}
+    <link rel="canonical" href="{{ .Permalink }}">
+    {{ end }}
+
+    {{ if .Site.IsServer }}
+    {{ $cssOpts := (dict "targetPath" "css/coder.css" "enableSourceMap" true ) }}
+    {{ $styles := resources.Get "scss/coder.scss" | resources.ExecuteAsTemplate "style.coder.css" . | toCSS $cssOpts }}
+    <link rel="stylesheet" href="{{ $styles.RelPermalink }}" media="screen">
+    {{ else }}
+    {{ $cssOpts := (dict "targetPath" "css/coder.css" ) }}
+    {{ $styles := resources.Get "scss/coder.scss" | resources.ExecuteAsTemplate "style.coder.css" . | toCSS $cssOpts |
+    minify | fingerprint }}
+    <link rel="stylesheet" href="{{ $styles.RelPermalink }}" integrity="{{ $styles.Data.Integrity }}"
+          crossorigin="anonymous" media="screen"/>
+    {{ end }}
+
+    {{ if .Site.Params.rtl }}
+    {{ if .Site.IsServer }}
+    {{ $cssOpts := (dict "targetPath" "css/coder-rtl.css" "enableSourceMap" true ) }}
+    {{ $styles := resources.Get "scss/coder-rtl.scss" | resources.ExecuteAsTemplate "style.coder-rtl.css" . | toCSS
+    $cssOpts }}
+    <link rel="stylesheet" href="{{ $styles.RelPermalink }}" media="screen">
+    {{ else }}
+    {{ $cssOpts := (dict "targetPath" "css/coder-rtl.css" ) }}
+    {{ $styles := resources.Get "scss/coder-rtl.scss" | resources.ExecuteAsTemplate "style.coder-rtl.css" . | toCSS
+    $cssOpts | minify | fingerprint }}
+    <link rel="stylesheet" href="{{ $styles.RelPermalink }}" integrity="{{ $styles.Data.Integrity }}"
+          crossorigin="anonymous" media="screen"/>
+    {{ end }}
+    {{ end }}
+
+    {{ if or (eq .Site.Params.colorScheme "auto") (eq .Site.Params.colorScheme "dark") }}
+    {{ if .Site.IsServer }}
+    {{ $cssOpts := (dict "targetPath" "css/coder-dark.css" "enableSourceMap" true ) }}
+    {{ $styles := resources.Get "scss/coder-dark.scss" | resources.ExecuteAsTemplate "style.coder-dark.css" . | toCSS
+    $cssOpts }}
+    <link rel="stylesheet" href="{{ $styles.RelPermalink }}" media="screen">
+    {{ else }}
+    {{ $cssOpts := (dict "targetPath" "css/coder-dark.css" ) }}
+    {{ $styles := resources.Get "scss/coder-dark.scss" | resources.ExecuteAsTemplate "style.coder-dark.css" . | toCSS
+    $cssOpts | minify | fingerprint }}
+    <link rel="stylesheet" href="{{ $styles.RelPermalink }}" integrity="{{ $styles.Data.Integrity }}"
+          crossorigin="anonymous" media="screen"/>
+    {{ end }}
+    {{ end }}
+
+    {{ range .Site.Params.customCSS }}
+    {{ if $.Site.IsServer }}
+    {{ $styles := resources.Get . }}
+    <link rel="stylesheet" href="{{ $styles.RelPermalink }}" media="screen">
+    {{ else }}
+    {{ $styles := resources.Get . | minify | fingerprint }}
+    <link rel="stylesheet" href="{{ $styles.RelPermalink }}" integrity="{{ $styles.Data.Integrity }}"
+          crossorigin="anonymous" media="screen"/>
+    {{ end }}
+    {{ end }}
+
+    {{ range .Site.Params.customSCSS }}
+    {{/* We don't change the targetPath to because it's transparent to users */}}
+    {{ if $.Site.IsServer }}
+    {{ $cssOpts := (dict "enableSourceMap" true ) }}
+    {{ $styles := resources.Get . | toCSS $cssOpts }}
+    <link rel="stylesheet" href="{{ $styles.RelPermalink }}" media="screen">
+    {{ else }}
+    {{ $styles := resources.Get . | toCSS | minify | fingerprint }}
+    <link rel="stylesheet" href="{{ $styles.RelPermalink }}" integrity="{{ $styles.Data.Integrity }}"
+          crossorigin="anonymous" media="screen"/>
+    {{ end }}
+    {{ end }}
+
+    <link rel="icon" type="image/png" href="{{ .Site.Params.favicon_32 | default " /images/favicon-32x32.png" | relURL }}" sizes="32x32">
+    <link rel="icon" type="image/png" href="{{ .Site.Params.favicon_16 | default " /images/favicon-16x16.png" | relURL }}" sizes="16x16">
+
+    <link rel="apple-touch-icon" href="{{ .Site.Params.touchicon | default " /images/apple-touch-icon.png" | relURL }}">
+    <link rel="apple-touch-icon" sizes="180x180" href="{{ .Site.Params.touchicon | default " /images/apple-touch-icon.png" | relURL }}">
+
+    {{ range .AlternativeOutputFormats -}}
+    {{ printf `
+    <link rel="%s" type="%s" href="%s" title="%s"/>
+
+    ` .Rel .MediaType.Type .RelPermalink $.Site.Title | safeHTML }}
+    {{ end -}}
+
+    {{ hugo.Generator }}
+
+    {{ partial "google-adsense" . }}
+
+    <script src="https://cdn.staticfile.org/jquery/3.6.0/jquery.min.js"></script>
+    <script src="https://cdn.staticfile.org/typeahead.js/0.11.1/typeahead.jquery.min.js"></script>
+    <link rel="stylesheet" href="css/custom.css">
+</head>
+
+{{ $csClass := "colorscheme-light" }}
+{{ if eq .Site.Params.colorScheme "dark" }}
+{{ $csClass = "colorscheme-dark" }}
+{{ else if eq .Site.Params.colorScheme "auto" }}
+{{ $csClass = "colorscheme-auto" }}
+{{ end }}
+<body class="preload-transitions {{ $csClass }}{{ if .Site.Params.rtl }} rtl{{ end }}">
+{{ partial "float" . }}
+<main class="wrapper">
+    {{ partial "header.html" . }}
+
+    <div class="content">
+        {{ block "content" . }}{{ end }}
+    </div>
+
+    {{ partial "footer.html" . }}
+</main>
+
+{{ if .Site.IsServer }}
+{{ $script := resources.Get "js/coder.js" }}
+<script src="{{ $script.RelPermalink }}"></script>
+{{ else }}
+{{ $script := resources.Get "js/coder.js" | minify | fingerprint }}
+<script src="{{ $script.RelPermalink }}" integrity="{{ $script.Data.Integrity }}"></script>
+{{ end }}
+
+{{ range .Site.Params.customJS }}
+{{ if $.Site.IsServer }}
+{{ $script := resources.Get . }}
+<script src="{{ $script.RelPermalink }}"></script>
+{{ else }}
+{{ $script := resources.Get . | minify | fingerprint }}
+<script src="{{ $script.RelPermalink }}" integrity="{{ $script.Data.Integrity }}"></script>
+{{ end }}
+{{ end }}
+
+<script src="https://cdn.staticfile.org/echarts/5.3.1/echarts.min.js"></script>
+
+<script type="text/javascript">
+
+    var chartDom = document.getElementById('chart');
+    var myChart = echarts.init(chartDom);
+
+    const upColor = '#ec0000';
+    const upBorderColor = '#ec0000';
+    const downColor = '#0f5622';
+    const downBorderColor = '#0f5622';
+
+    function period_change(ele) {
+        var data, v, a, b, histogram, fast, slow, p;
+        if (ele.value === 'D') {
+            data = D_data
+            a = D_a
+            b = D_b
+            v = D_v
+            histogram = D_histogram
+            fast = D_fast
+            slow = D_slow
+            p = '日'
+        } else if (ele.value === 'W') {
+            data = W_data
+            a = W_a
+            b = W_b
+            v = W_v
+            histogram = W_histogram
+            fast = W_fast
+            slow = W_slow
+            p = '周'
+        } else if (ele.value === 'M') {
+            data = M_data
+            a = M_a
+            b = M_b
+            v = M_v
+            histogram = M_histogram
+            fast = M_fast
+            slow = M_slow
+            p = '月'
+        }
+
+
+        // Each item: open，close，lowest，highest
+        const data0 = splitData(data);
+
+        const option = {
+            title: {
+                text: p + '线缠论分析',
+                left: 0
+            },
+            axisPointer: {
+                link: { xAxisIndex: 'all' },
+                label: {
+                    backgroundColor: '#777'
+                }
+            },
+            tooltip: {
+                trigger: 'axis',
+                axisPointer: {
+                    type: 'cross'
+                }
+            },
+            grid: [{
+                left: '5%',
+                right: '1%',
+                height: '60%'
+            },{
+                left: '5%',
+                right: '1%',
+                top: '71%',
+                height: '10%',
+            },{
+                left: '5%',
+                right: '1%',
+                top: '82%',
+                height: '14%'
+            }],
+            xAxis: [{
+                type: 'category',
+                data: data0.categoryData,
+                boundaryGap: false,
+                axisLine: {onZero: false},
+                splitLine: {show: false},
+                min: 'dataMin',
+                max: 'dataMax'
+            },{
+                type: 'category',
+                gridIndex: 1,
+                data: data0.categoryData,
+                axisLabel: {show: false},
+                axisPointer: {
+                    label: {show: false}
+                }
+            },{
+                type: 'category',
+                gridIndex: 2,
+                data: data0.categoryData,
+                axisLabel: {show: false},
+                axisPointer: {
+                    label: {show: false}
+                }
+            }],
+            yAxis: [{
+                scale: true,
+                splitArea: {
+                    show: true
+                }
+            },{
+                gridIndex: 1,
+                splitNumber: 3,
+                axisLine: {onZero: false},
+                axisTick: {show: false},
+                splitLine: {show: false},
+                axisLabel: {show: false}
+            },{
+                gridIndex: 2,
+                splitNumber: 4,
+                axisLine: {onZero: false},
+                axisTick: {show: false},
+                splitLine: {show: false},
+                axisLabel: {show: false}
+            }],
+            series: [
+                {
+                    name: '日K',
+                    type: 'candlestick',
+                    data: data0.values,
+                    itemStyle: {
+                        color: upColor,
+                        color0: downColor,
+                        borderColor: upBorderColor,
+                        borderColor0: downBorderColor
+                    },
+                    markArea: {
+                        data: b
+                    }
+                },
+                {
+                    name: '笔',
+                    type: 'line',
+                    data: a,
+                    connectNulls: true,
+                    showSymbol: false
+                },
+                {
+                    name: '成交量',
+                    type: 'bar',
+                    xAxisIndex: 1,
+                    yAxisIndex: 1,
+                    data: v,
+                    itemStyle: {
+                        normal: {
+                            color: function(params) {
+                                var colorList;
+                                if (data0.values[params.dataIndex][1]>data0.values[params.dataIndex][0]) {
+                                    colorList = upColor;
+                                } else {
+                                    colorList = downColor;
+                                }
+                                return colorList;
+                            },
+                        }
+                    }
+                },{
+                    name: 'MACD',
+                    type: 'bar',
+                    xAxisIndex: 2,
+                    yAxisIndex: 2,
+                    data: histogram,
+                    itemStyle: {
+                        normal: {
+                            color: function(params) {
+                                var colorList;
+                                if (params.data >= 0) {
+                                    colorList = upColor;
+                                } else {
+                                    colorList = downColor;
+                                }
+                                return colorList;
+                            },
+                        }
+                    }
+                },{
+                    name: 'DIF',
+                    type: 'line',
+                    xAxisIndex: 2,
+                    yAxisIndex: 2,
+                    data: fast
+                },{
+                    name: 'DEA',
+                    type: 'line',
+                    xAxisIndex: 2,
+                    yAxisIndex: 2,
+                    data: slow
+                }]
+        }
+        option && myChart.setOption(option);
+    }
+
+    function splitData(rawData) {
+        const categoryData = [];
+        const values = [];
+        for (var i = 0; i < rawData.length; i++) {
+            categoryData.push(rawData[i].slice(0, 1)[0]);
+            values.push(rawData[i].slice(1));
+        }
+        return {
+            categoryData: categoryData,
+            values: values
+        };
+    }
+
+    period_change({ value: 'D' })
+
+</script>
+
+<script src="js/items.js"></script>
+
+</body>
+
+</html>

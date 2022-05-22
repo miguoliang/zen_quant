@@ -1,0 +1,11 @@
+baseURL = 'https://miguoliang.com/zen_quant'
+languageCode = 'en-us'
+title = 'Zen Quant'
+theme = 'hugo-coder'
+
+[params]
+author = "Zen Quant"
+keywords = "quantitative trading,stock analyze"
+
+[params.googleTagManager]
+id = "G-3XTC5Q3D4Y"
