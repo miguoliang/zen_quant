@@ -216,18 +216,18 @@
             grid: [{
                 left: '5%',
                 right: '1%',
-                height: '60%'
+                height: '50%'
             },{
                 left: '5%',
                 right: '1%',
-                top: '71%',
+                top: '61%',
+                height: '15%',
+            },{
+                left: '5%',
+                right: '1%',
+                top: '78%',
                 height: '10%',
-            },{
-                left: '5%',
-                right: '1%',
-                top: '82%',
-                height: '14%'
-            }],
+            }]
             xAxis: [{
                 type: 'category',
                 data: data0.categoryData,
@@ -273,6 +273,20 @@
                 splitLine: {show: false},
                 axisLabel: {show: false}
             }],
+            dataZoom: [
+                {
+                    type: 'inside',
+                    start: 50,
+                    end: 100
+                },
+                {
+                    show: true,
+                    type: 'slider',
+                    top: '90%',
+                    start: 50,
+                    end: 100
+                }
+            ],
             series: [
                 {
                     name: '日K',
