@@ -1,6 +1,6 @@
 ---
-title: "N铖昌 - 001270.SZ"
-date: 2022-06-06T17:27:07+08:00
+title: "铖昌科技 - 001270.SZ"
+date: 2022-06-07T16:06:46+08:00
 draft: false
 ---
 {{< rawhtml >}}
@@ -11,22 +11,22 @@ draft: false
     </div>
     <div id="chart" style="height: 700px;"></div> 
     <script type="text/javascript">
-        const D_v = [5949.22]
-const D_histogram = [0.0]
-const D_fast = [0.0]
-const D_slow = [0.0]
-const D_data = [['2022-06-06', 26.02, 31.22, 26.02, 31.22]]
-const W_v = [5949.22]
+        const D_v = [5949.22,983.23]
+const D_histogram = [0.0,0.1991111111]
+const D_fast = [0.0,0.2488888889]
+const D_slow = [0.0,0.0497777778]
+const D_data = [['2022-06-06', 26.02, 31.22, 26.02, 31.22],['2022-06-07', 34.34, 34.34, 34.34, 34.34]]
+const W_v = [6932.45]
 const W_histogram = [0.0]
 const W_fast = [0.0]
 const W_slow = [0.0]
-const W_data = [['2022-06-10', 26.02, 31.22, 26.02, 31.22]]
-const M_v = [5949.22]
+const W_data = [['2022-06-10', 26.02, 34.34, 26.02, 34.34]]
+const M_v = [6932.45]
 const M_histogram = [0.0]
 const M_fast = [0.0]
 const M_slow = [0.0]
-const M_data = [['2022-06-30', 26.02, 31.22, 26.02, 31.22]]
-        const D_a = [null]
+const M_data = [['2022-06-30', 26.02, 34.34, 26.02, 34.34]]
+        const D_a = [null,null]
 const W_a = [null]
 const M_a = [null]
         const D_b = []
