@@ -1,6 +1,6 @@
 ---
 title: "C东利 - 301298.SZ"
-date: 2022-06-07T16:15:58+08:00
+date: 2022-06-08T17:11:03+08:00
 draft: false
 ---
 {{< rawhtml >}}
@@ -11,22 +11,22 @@ draft: false
     </div>
     <div id="chart" style="height: 700px;"></div> 
     <script type="text/javascript">
-        const D_v = [234716.5,241820.97]
-const D_histogram = [0.0,0.1652877493]
-const D_fast = [0.0,0.2066096866]
-const D_slow = [0.0,0.0413219373]
-const D_data = [['2022-06-06', 26.21, 27.46, 25.93, 29.46],['2022-06-07', 26.1, 30.05, 25.62, 32.94]]
-const W_v = [476537.47]
+        const D_v = [234716.5,241820.97,195991.1]
+const D_histogram = [0.0,0.1652877493,0.2119822794]
+const D_fast = [0.0,0.2066096866,0.3062997865]
+const D_slow = [0.0,0.0413219373,0.0943175072]
+const D_data = [['2022-06-06', 26.21, 27.46, 25.93, 29.46],['2022-06-07', 26.1, 30.05, 25.62, 32.94],['2022-06-08', 27.6, 29.3, 26.58, 30.95]]
+const W_v = [672528.5699999999]
 const W_histogram = [0.0]
 const W_fast = [0.0]
 const W_slow = [0.0]
-const W_data = [['2022-06-10', 26.21, 30.05, 25.62, 32.94]]
-const M_v = [476537.47]
+const W_data = [['2022-06-10', 26.21, 29.3, 25.62, 32.94]]
+const M_v = [672528.5699999999]
 const M_histogram = [0.0]
 const M_fast = [0.0]
 const M_slow = [0.0]
-const M_data = [['2022-06-30', 26.21, 30.05, 25.62, 32.94]]
-        const D_a = [null,null]
+const M_data = [['2022-06-30', 26.21, 29.3, 25.62, 32.94]]
+        const D_a = [null,null,null]
 const W_a = [null]
 const M_a = [null]
         const D_b = []
