@@ -1,6 +1,6 @@
 ---
 title: "三一重能 - 688349.SH"
-date: 2022-06-22T18:51:10+08:00
+date: 2022-06-23T17:32:07+08:00
 draft: false
 ---
 {{< rawhtml >}}
@@ -11,22 +11,22 @@ draft: false
     </div>
     <div id="chart" style="height: 700px;"></div> 
     <script type="text/javascript">
-        const D_v = [894458.27]
-const D_histogram = [0.0]
-const D_fast = [0.0]
-const D_slow = [0.0]
-const D_data = [['2022-06-22', 40.0, 40.96, 37.81, 43.34]]
-const W_v = [894458.27]
+        const D_v = [894458.27,456830.36]
+const D_histogram = [0.0,0.0931737892]
+const D_fast = [0.0,0.1164672365]
+const D_slow = [0.0,0.0232934473]
+const D_data = [['2022-06-22', 40.0, 40.96, 37.81, 43.34],['2022-06-23', 40.8, 42.42, 38.6, 42.52]]
+const W_v = [1351288.6299999999]
 const W_histogram = [0.0]
 const W_fast = [0.0]
 const W_slow = [0.0]
-const W_data = [['2022-06-24', 40.0, 40.96, 37.81, 43.34]]
-const M_v = [894458.27]
+const W_data = [['2022-06-24', 40.0, 42.42, 37.81, 43.34]]
+const M_v = [1351288.6299999999]
 const M_histogram = [0.0]
 const M_fast = [0.0]
 const M_slow = [0.0]
-const M_data = [['2022-06-30', 40.0, 40.96, 37.81, 43.34]]
-        const D_a = [null]
+const M_data = [['2022-06-30', 40.0, 42.42, 37.81, 43.34]]
+        const D_a = [null,null]
 const W_a = [null]
 const M_a = [null]
         const D_b = []
