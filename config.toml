@@ -13,4 +13,4 @@ id = "G-3XTC5Q3D4Y"
 [[menu.main]]
 name = "产品净值"
 weight = 1
-url = "net_value/"
+url = "../net_value/"
