@@ -1,16 +1,21 @@
 baseURL = 'https://miguoliang.com/zen_quant'
-languageCode = 'en-us'
-title = 'Zen Quant'
+languageCode = 'zh_CN'
+title = '分析工具 ｜ 禅宽量化'
 theme = 'hugo-coder'
 
 [params]
-author = "Zen Quant"
+author = "禅宽量化"
 keywords = "quantitative trading,stock analyze"
 
 [params.googleTagManager]
 id = "G-3XTC5Q3D4Y"
 
 [[menu.main]]
-name = "产品净值"
+name = "分析工具"
 weight = 1
+url = ""
+
+[[menu.main]]
+name = "产品净值"
+weight = 2
 url = "../net_value/"
