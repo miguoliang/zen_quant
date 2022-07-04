@@ -1,6 +1,6 @@
 ---
 title: "N德明利 - 001309.SZ"
-date: 2022-07-01T17:02:02+08:00
+date: 2022-07-04T20:18:53+08:00
 draft: false
 ---
 {{< rawhtml >}}
@@ -11,23 +11,23 @@ draft: false
     </div>
     <div id="chart" style="height: 700px;"></div> 
     <script type="text/javascript">
-        const D_v = [3863.32]
-const D_histogram = [0.0]
-const D_fast = [0.0]
-const D_slow = [0.0]
-const D_data = [['2022-07-01', 31.85, 38.22, 31.85, 38.22]]
-const W_v = [3863.32]
-const W_histogram = [0.0]
-const W_fast = [0.0]
-const W_slow = [0.0]
-const W_data = [['2022-07-01', 31.85, 38.22, 31.85, 38.22]]
-const M_v = [3863.32]
+        const D_v = [3863.32,739.51]
+const D_histogram = [0.0,0.2437834758]
+const D_fast = [0.0,0.3047293447]
+const D_slow = [0.0,0.0609458689]
+const D_data = [['2022-07-01', 31.85, 38.22, 31.85, 38.22],['2022-07-04', 42.04, 42.04, 42.04, 42.04]]
+const W_v = [3863.32,739.51]
+const W_histogram = [0.0,0.2437834758]
+const W_fast = [0.0,0.3047293447]
+const W_slow = [0.0,0.0609458689]
+const W_data = [['2022-07-01', 31.85, 38.22, 31.85, 38.22],['2022-07-08', 42.04, 42.04, 42.04, 42.04]]
+const M_v = [4602.83]
 const M_histogram = [0.0]
 const M_fast = [0.0]
 const M_slow = [0.0]
-const M_data = [['2022-07-29', 31.85, 38.22, 31.85, 38.22]]
-        const D_a = [null]
-const W_a = [null]
+const M_data = [['2022-07-29', 31.85, 42.04, 31.85, 42.04]]
+        const D_a = [null,null]
+const W_a = [null,null]
 const M_a = [null]
         const D_b = []
 const W_b = []
