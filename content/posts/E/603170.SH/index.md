@@ -1,6 +1,6 @@
 ---
 title: "宝立食品 - 603170.SH"
-date: 2022-07-15T20:42:45+08:00
+date: 2022-07-18T20:43:09+08:00
 draft: false
 ---
 {{< rawhtml >}}
@@ -11,23 +11,23 @@ draft: false
     </div>
     <div id="chart" style="height: 700px;"></div> 
     <script type="text/javascript">
-        const D_v = [13231.81]
-const D_histogram = [0.0]
-const D_fast = [0.0]
-const D_slow = [0.0]
-const D_data = [['2022-07-15', 12.06, 14.47, 12.06, 14.47]]
-const W_v = [13231.81]
-const W_histogram = [0.0]
-const W_fast = [0.0]
-const W_slow = [0.0]
-const W_data = [['2022-07-15', 12.06, 14.47, 12.06, 14.47]]
-const M_v = [13231.81]
+        const D_v = [13231.81,2529.05]
+const D_histogram = [0.0,0.0925356125]
+const D_fast = [0.0,0.1156695157]
+const D_slow = [0.0,0.0231339031]
+const D_data = [['2022-07-15', 12.06, 14.47, 12.06, 14.47],['2022-07-18', 15.92, 15.92, 15.92, 15.92]]
+const W_v = [13231.81,2529.05]
+const W_histogram = [0.0,0.0925356125]
+const W_fast = [0.0,0.1156695157]
+const W_slow = [0.0,0.0231339031]
+const W_data = [['2022-07-15', 12.06, 14.47, 12.06, 14.47],['2022-07-22', 15.92, 15.92, 15.92, 15.92]]
+const M_v = [15760.86]
 const M_histogram = [0.0]
 const M_fast = [0.0]
 const M_slow = [0.0]
-const M_data = [['2022-07-29', 12.06, 14.47, 12.06, 14.47]]
-        const D_a = [null]
-const W_a = [null]
+const M_data = [['2022-07-29', 12.06, 15.92, 12.06, 15.92]]
+        const D_a = [null,null]
+const W_a = [null,null]
 const M_a = [null]
         const D_b = []
 const W_b = []
