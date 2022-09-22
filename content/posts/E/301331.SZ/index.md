@@ -1,6 +1,6 @@
 ---
 title: "N恩威 - 301331.SZ"
-date: 2022-09-21T20:31:47+08:00
+date: 2022-09-22T20:30:59+08:00
 draft: false
 ---
 {{< rawhtml >}}
@@ -11,22 +11,22 @@ draft: false
     </div>
     <div id="chart" style="height: 700px;"></div> 
     <script type="text/javascript">
-        const D_v = [105087.79]
-const D_histogram = [0.0]
-const D_fast = [0.0]
-const D_slow = [0.0]
-const D_data = [['2022-09-21', 42.0, 43.73, 42.0, 50.1]]
-const W_v = [105087.79]
+        const D_v = [105087.79,86326.5]
+const D_histogram = [0.0,-0.3586552707]
+const D_fast = [0.0,-0.4483190883]
+const D_slow = [0.0,-0.0896638177]
+const D_data = [['2022-09-21', 42.0, 43.73, 42.0, 50.1],['2022-09-22', 38.0, 38.11, 37.6, 39.95]]
+const W_v = [191414.29]
 const W_histogram = [0.0]
 const W_fast = [0.0]
 const W_slow = [0.0]
-const W_data = [['2022-09-23', 42.0, 43.73, 42.0, 50.1]]
-const M_v = [105087.79]
+const W_data = [['2022-09-23', 42.0, 38.11, 37.6, 50.1]]
+const M_v = [191414.29]
 const M_histogram = [0.0]
 const M_fast = [0.0]
 const M_slow = [0.0]
-const M_data = [['2022-09-30', 42.0, 43.73, 42.0, 50.1]]
-        const D_a = [null]
+const M_data = [['2022-09-30', 42.0, 38.11, 37.6, 50.1]]
+        const D_a = [null,null]
 const W_a = [null]
 const M_a = [null]
         const D_b = []
